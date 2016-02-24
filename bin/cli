@@ -10,9 +10,14 @@ p "1. Visit shortened URL"
 choice = gets.chomp.to_i
 
 if choice == 0
-  p "Type in your long url:"
-  long_url = gets.chomp
-  result = ShortenedUrl.create_for_user_and_long_url!(user, long_url)
+  begin
+    p "Type in your long url:"
+    long_url = gets.chomp
+    result = ShortenedUrl.create_for_user_and_long_url!(user, long_url)
+  rescue
+    p "URL too long. Max characters is a secret. Keep trying."
+    retry
+  end
   p "Short url is: #{result.short_url}"
   result.save!
 

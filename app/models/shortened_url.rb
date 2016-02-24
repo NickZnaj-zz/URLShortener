@@ -1,6 +1,7 @@
 class ShortenedUrl < ActiveRecord::Base
 
   validates :short_url, :presence => true, :uniqueness => true
+  validates :long_url, length: { maximum: 1024 }
 
   belongs_to(
     :submitter,
