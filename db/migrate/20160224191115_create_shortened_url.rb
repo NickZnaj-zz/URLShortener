@@ -4,9 +4,9 @@ class CreateShortenedUrl < ActiveRecord::Migration
       t.string :long_url
       t.string :short_url
       t.integer :submitter_id
-
-      t.add_index :submitter_id
-      t.add_index :short_url
     end
+
+    add_index :shortened_urls, :submitter_id
+    add_index :shortened_urls, :short_url
   end
 end

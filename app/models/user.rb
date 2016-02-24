@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
     :submissions,
     class_name: 'ShortenedUrl',
     foreign_key: :submitter_id,
-    key: :id
+    primary_key: :id
   )
-  
+
 end
